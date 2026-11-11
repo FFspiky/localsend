@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          ref: daded58e18227aa4237ea0c314aef49beb2a4be5
+          ref: 86285b22b66fb1825319b718a76f15eb70c0a63d
           persist-credentials: false
       - uses: flutter-actions/setup-flutter@v4
         with:
@@ -23,10 +23,10 @@ jobs:
         run: flutter pub get
       - name: Check changed widget formatting
         working-directory: app
-        run: dart format --output=none --set-exit-if-changed lib/widget/dialogs/favorite_dialog.dart lib/widget/custom_icon_button.dart test/widget/custom_icon_button_test.dart
+        run: dart format --output=none --set-exit-if-changed lib/widget/dialogs/favorite_dialog.dart lib/widget/custom_icon_button.dart lib/pages/verify_page.dart lib/util/fingerprint_alphabet.dart test/widget/custom_icon_button_test.dart test/unit/util/fingerprint_alphabet_test.dart
       - name: Analyze affected widgets
         working-directory: app
-        run: flutter analyze --no-pub lib/widget/dialogs/favorite_dialog.dart lib/widget/custom_icon_button.dart test/widget/custom_icon_button_test.dart
+        run: flutter analyze --no-pub lib/widget/dialogs/favorite_dialog.dart lib/widget/custom_icon_button.dart lib/pages/verify_page.dart lib/util/fingerprint_alphabet.dart test/widget/custom_icon_button_test.dart test/unit/util/fingerprint_alphabet_test.dart
       - name: Verify accessibility and preserved scrolling
         working-directory: app
-        run: flutter test --no-pub test/widget/custom_icon_button_test.dart test/widget/favorite_dialog_test.dart test/widget/favorite_edit_dialog_test.dart --reporter expanded
+        run: flutter test --no-pub test/widget/custom_icon_button_test.dart test/widget/favorite_dialog_test.dart test/widget/favorite_edit_dialog_test.dart test/unit/util/fingerprint_alphabet_test.dart --reporter expanded
